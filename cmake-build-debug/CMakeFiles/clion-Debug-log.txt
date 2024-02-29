@@ -1,0 +1,4 @@
+"D:\sofware\Tools\CLion 2023.3.2\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=D:/sofware/Tools/CLion 2023.3.2/bin/ninja/win/x64/ninja.exe" -G Ninja -S D:\Fang_Junjie_RR\TESTCODE\discrete-elastic-dynamic-model-c-language -B D:\Fang_Junjie_RR\TESTCODE\discrete-elastic-dynamic-model-c-language\cmake-build-debug
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: D:/Fang_Junjie_RR/TESTCODE/discrete-elastic-dynamic-model-c-language/cmake-build-debug

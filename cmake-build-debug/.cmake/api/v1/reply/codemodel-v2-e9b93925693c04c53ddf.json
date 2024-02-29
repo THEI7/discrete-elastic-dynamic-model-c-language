@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.27"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "discrete_elastic_dynamic_model_c_language",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "discrete_elastic_dynamic_model_c_language::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-discrete_elastic_dynamic_model_c_language-Debug-670222a1080727338aba.json",
+					"name" : "discrete_elastic_dynamic_model_c_language",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Fang_Junjie_RR/TESTCODE/discrete-elastic-dynamic-model-c-language/cmake-build-debug",
+		"source" : "D:/Fang_Junjie_RR/TESTCODE/discrete-elastic-dynamic-model-c-language"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}
