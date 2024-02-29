@@ -3,7 +3,7 @@
 #### 介绍
 Implementing a Discrete Elastic Dynamic Model with C Language
 
-本代码是为了测试阻尼谐振子系统函数。
+本代码是为了测试阻尼谐振子系统函数。里面只有简易的Demo，没有进行封装。
 
 > 1. 运行环境IDE:CLION
 > 2. 编译器：GCC
