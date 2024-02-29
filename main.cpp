@@ -47,24 +47,22 @@ float Elastic_system_model_update(ElasticSystemModel_t * elastic)
 //    if((elastic->mass * GRAVITY * elastic->damping) >= ((elastic->tar - elastic->now) * elastic->stiffnes )) elastic->a = 0;//小球系统近似于谐振子系统
     //2. 计算当前帧
     elastic->obj_now = (elastic->v0 * elastic->T) + (elastic->a * elastic->T * elastic->T / 2);
-    output = elastic->obj_now;
 
     elastic->obj_last = elastic->obj_now;
+
     printf("v0:%f a:%f  last:%f now:%f\r\n",elastic->v0,elastic->a,elastic->obj_last,elastic->obj_now);
-    return output;
+    return elastic->obj_now;
 }
-float outputt  = 0.0f;
+
+
 int main() {
-    SDL2.init();
+
+    SDL2.init();//初始化驱动
 
     for(;;)
     {
         SDL2.cleanBuff();
-
-        outputt = Elastic_system_model_update(&esm);
-        if(abs(outputt) >240)outputt = 240;
-//        printf("%f\r\n",outputt);
-        SDL2.drawBox((uint8_t)outputt,10,10,10);
+        SDL2.drawBox((uint8_t)Elastic_system_model_update(&esm),10,10,10);
         SDL2.sendBuff();
     }
     return 0;
