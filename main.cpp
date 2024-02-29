@@ -47,9 +47,8 @@ float Elastic_system_model_update(ElasticSystemModel_t * elastic)
 //    if((elastic->mass * GRAVITY * elastic->damping) >= ((elastic->tar - elastic->now) * elastic->stiffnes )) elastic->a = 0;//小球系统近似于谐振子系统
     //2. 计算当前帧
     elastic->obj_now = (elastic->v0 * elastic->T) + (elastic->a * elastic->T * elastic->T / 2);
-
+    //3. 更新上一帧的信息
     elastic->obj_last = elastic->obj_now;
-
     printf("v0:%f a:%f  last:%f now:%f\r\n",elastic->v0,elastic->a,elastic->obj_last,elastic->obj_now);
     return elastic->obj_now;
 }
