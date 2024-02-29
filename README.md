@@ -2,7 +2,8 @@
 
 #### 介绍
 Implementing a Discrete Elastic Dynamic Model with C Language
-
+运行环境IDE:CLION
+编译器：GCC
 #### 软件架构
 软件架构说明
 
