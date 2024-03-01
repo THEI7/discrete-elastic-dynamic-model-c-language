@@ -26,11 +26,11 @@ typedef struct Elastic_system_model{
 
 ElasticSystemModel_t  esm = {
         .mass = 2,//重量
-        .stiffnes = 0.2,//刚力
-        .damping = 0.01,//阻尼
+        .stiffnes = 1.2,//刚力
+        .damping = 0.001,//阻尼
 
         .obj_tar = 200,//目标位置
-        .obj_now = 0,//当前位置
+        .obj_now = 10,//当前位置
         .obj_last = 0,//上一帧的位置
 
         .v0 = 0,//初始速度
@@ -43,8 +43,8 @@ float Elastic_system_model_update(ElasticSystemModel_t * elastic)
     static float output = 0.0f;
     //1. 计算上一帧的信息
     elastic->v0=elastic->v0+ elastic->a*elastic->T;
-    elastic->a =(  ( (elastic->obj_tar - elastic->obj_now) * elastic->stiffnes ) - (elastic->mass * GRAVITY * elastic->damping)   )/ elastic->mass;
-//    if((elastic->mass * GRAVITY * elastic->damping) >= ((elastic->tar - elastic->now) * elastic->stiffnes )) elastic->a = 0;//小球系统近似于谐振子系统
+    //elastic->a =(  ( (elastic->obj_tar - elastic->obj_now) * elastic->stiffnes ) - (elastic->mass * GRAVITY * elastic->damping)   )/ elastic->mass;
+    elastic->a = (  ( (elastic->obj_tar - elastic->obj_now) * elastic->stiffnes ) +(elastic->v0 * elastic->damping)   )/ elastic->mass;
     //2. 计算当前帧
     elastic->obj_now = (elastic->v0 * elastic->T) + (elastic->a * elastic->T * elastic->T / 2);
     //3. 更新上一帧的信息
