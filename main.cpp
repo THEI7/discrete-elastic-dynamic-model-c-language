@@ -61,11 +61,15 @@ int main() {
     static int32_t i = 0;
     for(;;)
     {
+        //set target
         i++;
-        if(i>200)esm.obj_tar = 20;
-        if(i>500)esm.obj_tar = 100;
-        SDL2.cleanBuff();
+        if(i>100)esm.obj_tar = 20;
+        if(i>200){esm.obj_tar = 100;}
+        if(i>300){esm.obj_tar = 100;}
+        if(i>400){esm.obj_tar = 60;i=0;}
 
+        //demo
+        SDL2.cleanBuff();
         output = Elastic_system_model_update(&esm);
         SDL2.drawLine(200+20,40,200+20,60);
         SDL2.drawLine(200+20,50,(uint8_t)output,50);
