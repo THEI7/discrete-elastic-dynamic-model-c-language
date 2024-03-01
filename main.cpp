@@ -58,16 +58,20 @@ float output ;
 int main() {
 
     SDL2.init();//初始化驱动
-
+    static int32_t i = 0;
     for(;;)
     {
+        i++;
+        if(i>200)esm.obj_tar = 20;
+        if(i>500)esm.obj_tar = 100;
         SDL2.cleanBuff();
 
         output = Elastic_system_model_update(&esm);
-        SDL2.drawLine(esm.obj_tar+10,40,esm.obj_tar+10,60);
-        SDL2.drawLine(esm.obj_tar+10,50,(uint8_t)output,50);
+        SDL2.drawLine(200+20,40,200+20,60);
+        SDL2.drawLine(200+20,50,(uint8_t)output,50);
         SDL2.drawDisc((uint8_t)output,50,10,SDL2_DRAW_ALL);
         SDL2.sendBuff();
+
     }
     return 0;
 }
