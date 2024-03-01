@@ -65,7 +65,7 @@ int main() {
         i++;
         if(i>100)esm.obj_tar = 20;
         if(i>200){esm.obj_tar = 100;}
-        if(i>300){esm.obj_tar = 100;}
+        if(i>300){esm.obj_tar = 200;}
         if(i>400){esm.obj_tar = 60;i=0;}
 
         //demo
