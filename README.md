@@ -9,6 +9,9 @@ Implementing a Discrete Elastic Dynamic Model with C Language
 > 2. 编译器：GCC
 > 3. 第三方库：SDL2
 
+![image](./demo1.gif)
+![image](./demo2.gif)
+
 #### 软件架构
 SDL2.init()；//初始化图形驱动
 

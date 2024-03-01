@@ -26,7 +26,7 @@ typedef struct Elastic_system_model{
 
 ElasticSystemModel_t  esm = {
         .mass = 2,//重量
-        .stiffnes = 1.2,//刚力
+        .stiffnes = 0.2,//刚力
         .damping = 0.01,//阻尼
 
         .obj_tar = 200,//目标位置
