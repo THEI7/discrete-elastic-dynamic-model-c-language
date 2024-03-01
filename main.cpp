@@ -26,8 +26,8 @@ typedef struct Elastic_system_model{
 
 ElasticSystemModel_t  esm = {
         .mass = 2,//重量
-        .stiffnes = 1,//刚力
-        .damping = 0.1,//阻尼
+        .stiffnes = 1.2,//刚力
+        .damping = 0.01,//阻尼
 
         .obj_tar = 200,//目标位置
         .obj_now = 0,//当前位置
@@ -53,6 +53,7 @@ float Elastic_system_model_update(ElasticSystemModel_t * elastic)
     return elastic->obj_now;
 }
 
+float output ;
 
 int main() {
 
@@ -61,7 +62,11 @@ int main() {
     for(;;)
     {
         SDL2.cleanBuff();
-        SDL2.drawBox((uint8_t)Elastic_system_model_update(&esm),10,10,10);
+
+        output = Elastic_system_model_update(&esm);
+        SDL2.drawLine(esm.obj_tar+10,40,esm.obj_tar+10,60);
+        SDL2.drawLine(esm.obj_tar+10,50,(uint8_t)output,50);
+        SDL2.drawDisc((uint8_t)output,50,10,SDL2_DRAW_ALL);
         SDL2.sendBuff();
     }
     return 0;
