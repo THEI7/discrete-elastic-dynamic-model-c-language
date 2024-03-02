@@ -90,6 +90,19 @@ public:
         if(!isInitialized)init();
         sdl2_DrawDisc(&sdl2,x,y,rad,option);
     }
+
+    /*8.draw  circle*/
+    void drawEllipse(int16_t x0, int16_t y0, int16_t rx, int16_t ry, uint8_t option)
+    {
+        if(!isInitialized)init();
+        sdl2_DrawEllipse(&sdl2,x0,y0,rx,ry,option);
+    }
+    /*8.draw  disc*/
+    void drawFilledEllipse(int16_t x0, int16_t y0, int16_t rx, int16_t ry, uint8_t option)
+    {
+        if(!isInitialized)init();
+        sdl2_DrawFilledEllipse(&sdl2,x0,y0,rx,ry,option);
+    }
     /*-------------------------------- buff funciton --------------------------------*/
     /*5.send buff*/
     void sendBuff()

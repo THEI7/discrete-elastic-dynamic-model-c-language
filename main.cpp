@@ -78,10 +78,10 @@ int main() {
 
         #if 1 //演示动画2 加上 Motion Stretch
         if(abs(esm.a) < 1) {
-            sdl2_DrawFilledEllipse(&sdl2, (uint8_t) output, 50, 10, 10, SDL2_DRAW_ALL);
+            SDL2.drawFilledEllipse((uint8_t) output, 50, 10, 10, SDL2_DRAW_ALL);
         }
         else{
-            sdl2_DrawFilledEllipse(&sdl2, (uint8_t)output, 50+1, 12, 8, SDL2_DRAW_ALL);
+            SDL2.drawFilledEllipse( (uint8_t)output, 50+1, 12, 8, SDL2_DRAW_ALL);
         }
         #endif
 
