@@ -40,10 +40,9 @@ ElasticSystemModel_t  esm = {
 
 float Elastic_system_model_update(ElasticSystemModel_t * elastic)
 {
-    static float output = 0.0f;
     //1. 计算上一帧的信息
     elastic->v0=elastic->v0+ elastic->a*elastic->T;
-    //elastic->a =(  ( (elastic->obj_tar - elastic->obj_now) * elastic->stiffnes ) - (elastic->mass * GRAVITY * elastic->damping)   )/ elastic->mass;
+    //elastic->a =(  ( (elastic->obj_tar - s->obj_now) * elastic->stiffnes ) - (elastic->mass * GRAVITY * elastic->damping)   )/ elastic->mass;
     elastic->a = (  ( (elastic->obj_tar - elastic->obj_now) * elastic->stiffnes ) +(elastic->v0 * elastic->damping)   )/ elastic->mass;
     //2. 计算当前帧
     elastic->obj_now = (elastic->v0 * elastic->T) + (elastic->a * elastic->T * elastic->T / 2);
@@ -73,7 +72,19 @@ int main() {
         output = Elastic_system_model_update(&esm);
         SDL2.drawLine(200+20,40,200+20,60);
         SDL2.drawLine(200+20,50,(uint8_t)output,50);
-        SDL2.drawDisc((uint8_t)output,50,10,SDL2_DRAW_ALL);
+        #if 0 //演示动画1 没有加上 Motion Stretch
+        //        SDL2.drawDisc((uint8_t)output,50,10,SDL2_DRAW_ALL);
+        #endif
+
+        #if 1 //演示动画2 加上 Motion Stretch
+        if(abs(esm.a) < 1) {
+            sdl2_DrawFilledEllipse(&sdl2, (uint8_t) output, 50, 10, 10, SDL2_DRAW_ALL);
+        }
+        else{
+            sdl2_DrawFilledEllipse(&sdl2, (uint8_t)output, 50+1, 12, 8, SDL2_DRAW_ALL);
+        }
+        #endif
+
         SDL2.sendBuff();
 
     }
