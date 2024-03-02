@@ -111,7 +111,7 @@ public:
         sdl2_sendbuffer(&sdl2);
     }
     /*6.clean buff*/
-    void cleanBuff()
+    void clearBuff()
     {
         if(!isInitialized)init();//CHECK THE STATE
         sdl2_cleanBuffer();

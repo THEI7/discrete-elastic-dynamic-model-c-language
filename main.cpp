@@ -68,7 +68,7 @@ int main() {
         if(i>400){esm.obj_tar = 60;i=0;}
 
         //demo
-        SDL2.cleanBuff();
+        SDL2.clearBuff();
         output = Elastic_system_model_update(&esm);
         SDL2.drawLine(200+20,40,200+20,60);
         SDL2.drawLine(200+20,50,(uint8_t)output,50);
