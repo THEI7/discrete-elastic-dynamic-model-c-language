@@ -41,7 +41,7 @@ int TraColor(int color)
 int sdl2_setPixBuffer(sdl2_t *sdl2,int x0,int y0)
 {
     //1.check the state:if out of the range , don't operate the buffer;
-    if((x0>=SCREEN_WIDTH)&&(x0<0)&&(y0>=SCREEN_HEIGHT)&&(y0<0)) return 0;
+    if((x0>=SCREEN_WIDTH)||(x0<0)||(y0>=SCREEN_HEIGHT)||(y0<0)) return 0;
     //2.operate the buffer;
     if(sdl2 ->mode == NORMAL){//Draw the color
         disp_buf[y0][x0] = sdl2->draw_color;

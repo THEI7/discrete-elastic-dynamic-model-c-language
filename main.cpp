@@ -19,6 +19,10 @@ typedef struct Elastic_system_model{
     float obj_tar;//目标位置
     float obj_now;//当前位置
     float obj_last;//上一帧的位置
+
+    float dx;
+    float dx_last;
+
     float v0;//初始速度
     float a;//加速度
     float T;//每一帧之间的时间间隔
@@ -26,18 +30,38 @@ typedef struct Elastic_system_model{
 
 ElasticSystemModel_t  esm = {
         .mass = 2,//重量
-        .stiffnes = 1.2,//刚力
-        .damping = 0.001,//阻尼
+        .stiffnes = 1.4,//刚力
+        .damping = 1.400,//阻尼
 
         .obj_tar = 200,//目标位置
         .obj_now = 10,//当前位置
         .obj_last = 0,//上一帧的位置
 
+        .dx = 0,//形变
+        .dx_last = 0,
+
         .v0 = 0,//初始速度
         .a = 0,//加速度
-        .T = 1,//每一帧之间的时间间隔
+        .T =1,//每一帧之间的时间间隔
 };
 
+float Elastic_system_model_update(ElasticSystemModel_t * elastic)
+{
+    //0.check the state
+    elastic->dx = (elastic->obj_now-elastic->obj_tar);
+    //1. 计算当前帧的加速度
+    elastic->a =-1* (  ( elastic->dx * elastic->stiffnes ) +(((elastic->dx - elastic->dx_last)/elastic->T) * elastic->damping)   )/ elastic->mass;
+    //2. 计算当前帧
+    elastic->obj_now += (elastic->v0 * elastic->T) + (elastic->a * elastic->T * elastic->T / 2);
+    //3. 更新状态
+//    elastic->v0=(elastic->obj_now-elastic->obj_last)/elastic->T;
+//    elastic->obj_last = elastic->obj_now;
+    elastic->dx_last = elastic->dx;
+    printf("v0:%f a:%f  last:%f now:%f\r\n",elastic->v0,elastic->a,elastic->obj_last,elastic->obj_now);
+    return elastic->obj_now;
+}
+
+#if 0
 float Elastic_system_model_update(ElasticSystemModel_t * elastic)
 {
     //1. 计算上一帧的信息
@@ -51,6 +75,8 @@ float Elastic_system_model_update(ElasticSystemModel_t * elastic)
     printf("v0:%f a:%f  last:%f now:%f\r\n",elastic->v0,elastic->a,elastic->obj_last,elastic->obj_now);
     return elastic->obj_now;
 }
+#endif
+
 
 float output ;
 
@@ -60,12 +86,6 @@ int main() {
     static int32_t i = 0;
     for(;;)
     {
-        //set target
-        i++;
-        if(i>100)esm.obj_tar = 20;
-        if(i>200){esm.obj_tar = 100;}
-        if(i>300){esm.obj_tar = 200;}
-        if(i>400){esm.obj_tar = 60;i=0;}
 
         //demo
         SDL2.clearBuff();
